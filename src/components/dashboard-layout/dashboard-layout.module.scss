@@ -1,0 +1,21 @@
+@import '../../styles/index';
+
+$dashboard-layout__sidebar---width: 300px !default;
+
+.dashboard-layout {
+  display: flex;
+  height: 100%;
+
+  &__sidebar {
+    min-width: $dashboard-layout__sidebar---width;
+    max-width: $dashboard-layout__sidebar---width;
+    padding: $sizes---padding;
+  }
+
+  &__content {
+    padding: $sizes---padding;
+    flex: 1;
+    border: solid gc(border);
+    border-width: 0 1px;
+  }
+}
