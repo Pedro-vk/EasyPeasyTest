@@ -1,10 +1,17 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+
+import { Stats } from 'src/+stats/stats'
 
 const Home: NextPage = () => {
   return (
-    <h1>Massari test</h1>
+    <>
+      <Head>
+        <title>Massari Test</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <Stats/>
+    </>
   )
 }
 
