@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react'
 import type { NextPage } from 'next'
 
-import { UiText, UiDashboardLayout } from 'ui'
+import { UiDashboardLayout } from 'ui'
+import { Sidebar } from './sections/sidebar'
 
 export const Stats: NextPage = () => {
 
@@ -9,7 +10,7 @@ export const Stats: NextPage = () => {
     <>
       <UiDashboardLayout
         left={(
-          <UiText type="h1">Massari Stats</UiText>
+          <Sidebar/>
         )}
       />
     </>
