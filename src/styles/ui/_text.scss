@@ -6,17 +6,17 @@ $ui-text---color: gc(text) !default;
 @mixin ui-text($type: false) {
   @if ($type) {
     @if ($type == h1) {
-      @include get-font(heading, light);
+      @include get-font(heading, ultralight);
 
-      font-size: 40px;
+      font-size: 42px;
 
     } @else if ($type == h2) {
-      @include get-font(heading);
+      @include get-font(heading, light);
 
       font-size: 32px;
 
     } @else if ($type == h3) {
-      @include get-font(heading);
+      @include get-font(heading, light);
 
       font-size: 24px;
 
