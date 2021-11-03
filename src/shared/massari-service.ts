@@ -9,6 +9,11 @@ export class MassariService {
 
   private constructor() {}
 
+  async getMetrics(asset: string) {
+    const response = await fetch(this.getMetricsUrl(asset))
+    return await response.json()
+  }
+
   private getMetricsUrl(asset: string) {
     return `${this.baseUrl}/assets/${asset}/metrics`
   }
