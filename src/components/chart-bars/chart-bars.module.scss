@@ -33,5 +33,21 @@
     grid-area: chart;
     border: solid gc(border);
     border-width: 0 0 1px 1px;
+    display: flex;
+    padding: $sizes---padding
+  }
+  &__column {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  &__bar {
+    $size: 10px;
+
+    width: $size;
+    border-radius: $size / 2;
+    background: gc(secondary);
+    min-height: $size;
   }
 }

@@ -36,10 +36,12 @@ export const UiChartBars = function(
         <div className={b('axis-value')}>{toD(data[data.length - 1].timestamp)}</div>
       </div>
       <div className={b('chart')}>
-        Chart
+        {volumes.map((v, i) => (
+          <div key={i} className={b('column')}>
+            <div className={b('bar')} style={{height: `${(v -min) / (max - min) * 100}%`}} />
+          </div>
+        ))}
       </div>
-
-      {/*<UiText type="h3" className={b('heading')}>{title}</UiText>*/}
     </div>
     </>
   )
