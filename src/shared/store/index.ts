@@ -1,11 +1,25 @@
-import { createStore, action, thunk, thunkOn, Action, Thunk, ThunkOn, createTypedHooks } from 'easy-peasy'
-import { massariService } from 'src/shared'
+import {
+  createStore,
+  action, thunk, thunkOn,
+  Action, Thunk, ThunkOn,
+  createTypedHooks,
+} from 'easy-peasy'
+import { massariService, cleanMassariTimeSeries } from 'src/shared'
+
+interface TimeData {
+  timestamp: number
+  open: number
+  high: number
+  low: number
+  close: number
+  volume: number
+}
 
 interface StoreModel {
   cryptoList: string[]
   crypto: string
   timePeriod: 'month' | 'week'
-  timeData: any
+  timeData: TimeData | undefined
   cryptoMetrics: any
 
   initialize: Action<StoreModel>
@@ -56,7 +70,7 @@ export const store = createStore<StoreModel>({
     actions.setTimeData(undefined)
     const state = getState()
     const result = await massariService.getTimeseries(state.crypto, state.timePeriod)
-    actions.setTimeData(result.data)
+    actions.setTimeData(cleanMassariTimeSeries(result.data))
   }),
 
   // Side effects
