@@ -6,7 +6,7 @@ interface SelectorProps {
   title: string
   options: string[]
   value?: string
-  onChange?: (value: string) => void
+  onChange?: (value: string | any) => void
 }
 
 const b = BEM('selector', styles)
