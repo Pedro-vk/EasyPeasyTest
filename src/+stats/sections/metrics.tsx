@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import { useStoreState, useStoreActions } from 'src/shared/store'
+import { toM, formatNumber } from 'src/shared'
 import {
   MdLeaderboard,
   MdAttachMoney,
@@ -13,18 +14,15 @@ import { UiText, UiSelector } from 'ui'
 
 import styles from './metrics.module.scss'
 
-const formatter = new Intl.NumberFormat('en-US')
-const toM = (n: number) => (n / (10 ** 6)).toFixed(1)
-
 export const Metrics = () => {
   const crypto = useStoreState((state) => state.crypto)
   const m = useStoreState((state) => state.cryptoMetrics)
 
   const values = [
-    [MdDeviceThermostat, 'Rank', m?.marketcap?.rank],
-    [MdAttachMoney, 'Price', m?.market_data?.price_usd?.toFixed?.(2), '$'],
-    [MdLeaderboard, 'Marketcap', toM(m?.marketcap?.current_marketcap_usd), 'M$'],
-    [MdAutoGraph, 'Volume', toM(m?.market_data?.real_volume_last_24_hours), 'M$'],
+    [MdDeviceThermostat, 'Rank', m?.marketcap?.rank, null, 0],
+    [MdAttachMoney, 'Price', m?.market_data?.price_usd?.toFixed?.(2), '$', 2],
+    [MdLeaderboard, 'Marketcap', toM(m?.marketcap?.current_marketcap_usd), 'M$', 1],
+    [MdAutoGraph, 'Volume', toM(m?.market_data?.real_volume_last_24_hours), 'M$', 1],
   ]
 
   const show = (value: any) => m ? value : <>&mdash;</>
@@ -33,12 +31,12 @@ export const Metrics = () => {
     <>
       <UiText type="h2" className={styles.heading}>{crypto} Metrics</UiText>
 
-      {values.map(([Icon, name, value, unit]) => (
+      {values.map(([Icon, name, value, unit, decimals]) => (
         <div key={name} className={styles.attribute}>
           <Icon className={styles.attributeIcon}/>
           <span className={styles.attributeName}>{name}</span>
           <span className={styles.attributeValue}>
-            {show(formatter.format(value))}
+            {show(formatNumber(value, decimals))}
           </span>
           <span className={styles.attributeUnit}>
             {unit}

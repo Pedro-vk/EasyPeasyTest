@@ -8,3 +8,13 @@ export const cleanMassariTimeSeries = (data: any) => {
       return clean
     })
 }
+
+
+
+export const toM = (n: number) => (n / (10 ** 6)).toFixed(1)
+
+export const formatNumber = (n: number, decimals?: number) =>
+  new Intl.NumberFormat('en-US', {minimumFractionDigits: decimals})
+    .format(n)
+
+export const toMF = (n: number, decimals?: number) => formatNumber(+toM(n), decimals)

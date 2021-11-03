@@ -19,7 +19,7 @@ interface StoreModel {
   cryptoList: string[]
   crypto: string
   timePeriod: 'month' | 'week'
-  timeData: TimeData | undefined
+  timeData: TimeData[] | undefined
   cryptoMetrics: any
 
   initialize: Action<StoreModel>
