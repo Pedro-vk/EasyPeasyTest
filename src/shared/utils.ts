@@ -18,3 +18,11 @@ export const formatNumber = (n: number, decimals?: number) =>
     .format(n)
 
 export const toMF = (n: number, decimals?: number) => formatNumber(+toM(n), decimals)
+
+const numeric = 'numeric' as const
+const dateFormatOptions = {
+  year: numeric, month: numeric, day: numeric,
+  hour: numeric, minute: numeric,
+  hour12: false,
+}
+export const toD = (date: number | string) => new Intl.DateTimeFormat('en-UK', dateFormatOptions).format(new Date(date))
