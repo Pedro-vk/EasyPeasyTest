@@ -23,7 +23,8 @@ export const UiSelector = function(
       {options.map(option => (
         <div
           key={option}
-          className={b('option', {selected: value === option})}>
+          className={b('option', {selected: value === option})}
+          onClick={() => onChange?.(option)}>
 
           {option}
         </div>
