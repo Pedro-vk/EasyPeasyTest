@@ -12,6 +12,12 @@ export const Charts = () => {
     <>
       <div className={styles.wrapper}>
         <div className={styles.container}>
+          <UiText type="h3" className={styles.containerTitle}>Price</UiText>
+          <div className={styles.containerChart}>
+            {timeData && <UiChartBars data={timeData}/>}
+          </div>
+        </div>
+        <div className={[styles.container, styles.containerVolume].join(' ')}>
           <UiText type="h3" className={styles.containerTitle}>Volume</UiText>
           <div className={styles.containerChart}>
             {timeData && <UiChartBars data={timeData}/>}
