@@ -5,6 +5,7 @@ import { useStoreActions } from 'src/shared/store'
 import { UiDashboardLayout } from 'ui'
 import { Sidebar } from './sections/sidebar'
 import { Metrics } from './sections/metrics'
+import { Charts } from './sections/charts'
 
 export const Stats: NextPage = () => {
 
@@ -19,6 +20,7 @@ export const Stats: NextPage = () => {
       <UiDashboardLayout
         left={<Sidebar/>}
         right={<Metrics/>}
+        main={<Charts/>}
       />
     </>
   )

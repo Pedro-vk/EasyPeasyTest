@@ -54,11 +54,11 @@ export const Metrics = () => {
         <div className={styles.moonBar}>
           <div
             className={styles.moonBarProgress}
-            style={{width: `${m?.market_data?.price_usd / m?.all_time_high?.price * 100}%`}}
+            style={{width: `${(m?.market_data?.price_usd / m?.all_time_high?.price * 100) || 0}%`}}
           />
         </div>
         <div className={styles.moonInfo}>
-          The current price is {show(m?.all_time_high?.percent_down.toFixed(0))}% less than the higher price
+          The current price is {show(m?.all_time_high?.percent_down?.toFixed?.(0))}% less than the higher price
         </div>
       </div>
     </>
