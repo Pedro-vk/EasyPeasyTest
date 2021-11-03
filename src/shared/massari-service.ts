@@ -1,5 +1,7 @@
 const formatter = new Intl.DateTimeFormat('en-UK')
 
+export type MassariTimePeriod = 'year' | 'month' | 'week'
+
 export class MassariService {
   private static instance: MassariService
 
@@ -16,7 +18,7 @@ export class MassariService {
     return await response.json()
   }
 
-  async getTimeseries(asset: string, period: 'week' | 'month') {
+  async getTimeseries(asset: string, period: MassariTimePeriod) {
     const response = await fetch(this.getTimeseriesUrl(asset, period))
     return await response.json()
   }
@@ -25,17 +27,21 @@ export class MassariService {
     return `${this.baseUrl}/assets/${asset}/metrics`
   }
 
-  private getTimeseriesUrl(asset: string, period: 'week' | 'month') {
+  private getTimeseriesUrl(asset: string, period: MassariTimePeriod) {
     const format = (d: any) => formatter.format(d).split('/').reverse().join('-')
     let start, end, interval
-    if (period === 'month') {
+    if (period === 'year') {
+      start = format(Date.now() - (1000 * 60 * 60 * 24 * 365))
+      end = format(Date.now())
+      interval = '1w'
+    } else if (period === 'month') {
       start = format(Date.now() - (1000 * 60 * 60 * 24 * 30))
       end = format(Date.now())
       interval = '1d'
     } else {
       start = format(Date.now() - (1000 * 60 * 60 * 24 * 7))
       end = format(Date.now())
-      interval = '1h'
+      interval = '1d'
     }
     return `${this.baseUrl}/assets/${asset}/metrics/price/time-series?start=${start}&end=${end}&interval=${interval}`
   }

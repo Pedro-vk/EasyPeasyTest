@@ -4,7 +4,7 @@ import {
   Action, Thunk, ThunkOn,
   createTypedHooks,
 } from 'easy-peasy'
-import { massariService, cleanMassariTimeSeries } from 'src/shared'
+import { massariService, cleanMassariTimeSeries, MassariTimePeriod } from 'src/shared'
 
 interface TimeData {
   timestamp: number
@@ -18,13 +18,13 @@ interface TimeData {
 interface StoreModel {
   cryptoList: string[]
   crypto: string
-  timePeriod: 'month' | 'week'
+  timePeriod: MassariTimePeriod
   timeData: TimeData[] | undefined
   cryptoMetrics: any
 
   initialize: Action<StoreModel>
   changeCrypto: Action<StoreModel, string>
-  changeTimePeriod: Action<StoreModel, 'month' | 'week'>
+  changeTimePeriod: Action<StoreModel, MassariTimePeriod>
   setMetrics: Action<StoreModel, any>
   setTimeData: Action<StoreModel, any>
 

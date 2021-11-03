@@ -26,7 +26,7 @@ export const Sidebar = () => {
 
       <UiSelector
         title="Time period"
-        options={['week', 'month']}
+        options={['week', 'month', 'year']}
         value={timePeriod}
         onChange={changeTimePeriod}
       />
