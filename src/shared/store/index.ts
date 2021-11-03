@@ -15,8 +15,10 @@ interface StoreModel {
   setTimeData: Action<StoreModel, any>
 
   fetchMetrics: Thunk<StoreModel>
+  fetchTimeData: Thunk<StoreModel>
 
   fetchMetricsOnChange: ThunkOn<StoreModel>
+  fetchTimeDataOnChange: ThunkOn<StoreModel>
 }
 
 
@@ -50,6 +52,12 @@ export const store = createStore<StoreModel>({
     const result = await massariService.getMetrics(state.crypto)
     actions.setMetrics(result.data)
   }),
+  fetchTimeData: thunk(async (actions, payload, {getState}) => {
+    actions.setTimeData(undefined)
+    const state = getState()
+    const result = await massariService.getTimeseries(state.crypto, state.timePeriod)
+    actions.setTimeData(result.data)
+  }),
 
   // Side effects
   fetchMetricsOnChange: thunkOn(
@@ -57,7 +65,13 @@ export const store = createStore<StoreModel>({
     (actions, target) => {
       actions.fetchMetrics()
     }
-  )
+  ),
+  fetchTimeDataOnChange: thunkOn(
+    actions => [actions.initialize, actions.changeCrypto, actions.changeTimePeriod],
+    (actions, target) => {
+      actions.fetchTimeData()
+    }
+  ),
 })
 
 const typedHooks = createTypedHooks<StoreModel>()
