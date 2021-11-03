@@ -29,9 +29,8 @@
       border: 2px solid gc(brand);
       box-sizing: border-box;
       display: inline-block;
-      margin-right: $sizes---padding / 2;
+      margin-right: $sizes---padding;
       position: relative;
-      top: -1px;
       box-shadow: inset 0 0 0 2px gc(bg);
     }
 

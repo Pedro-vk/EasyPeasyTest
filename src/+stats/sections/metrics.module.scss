@@ -6,3 +6,52 @@
   padding: 0 $sizes---padding $sizes---padding;
   text-transform: capitalize;
 }
+
+.attribute {
+  padding-top: $sizes---padding;
+  display: flex;
+  align-items: center;
+
+  &Icon {
+    width: 24px;
+    height: 24px;
+    color: gc(brand);
+  }
+  &Name {
+    padding: 0 $sizes---padding;
+    flex: 1;
+  }
+  &Value {
+    @include get-font(text, bold);
+  }
+  &Unit {
+    padding-left: 0.2em;
+  }
+}
+
+.moon {
+  padding: ($sizes---padding * 3) 0 $sizes---padding;
+
+  &Icons {
+    display: flex;
+    justify-content: space-between;
+  }
+  &Bar {
+    margin: ($sizes---padding / 2) 0;
+    background: gc(border);
+
+    &,
+    &Progress {
+      height: 10px;
+      border-radius: 5px;
+    }
+    &Progress {
+      @include transition;
+      max-width: 100%;
+      background: gc(secondary);
+    }
+  }
+  &Info {
+    font-size: 11px;
+  }
+}

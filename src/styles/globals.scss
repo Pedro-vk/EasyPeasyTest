@@ -13,6 +13,8 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background: gc(bg);
   color: gc(text);
+
+  @include ui-text(regular);
 }
 
 body {
