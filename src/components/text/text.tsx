@@ -25,3 +25,5 @@ export const UiText = React.forwardRef(function<W extends keyof JSX.IntrinsicEle
     </Wrapper>
   )
 })
+
+UiText.displayName = 'UiText'

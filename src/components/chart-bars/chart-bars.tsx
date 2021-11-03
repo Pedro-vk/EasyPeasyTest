@@ -12,7 +12,7 @@ interface ChartBarsProps {
 
 const b = BEM('chart-bars', styles)
 
-export const UiChartBars = function(
+export const UiChartBars = React.memo(function(
   props: ChartBarsProps & Props<any>
 ) {
   const {data} = props
@@ -43,4 +43,5 @@ export const UiChartBars = function(
     </div>
     </>
   )
-}
+})
+UiChartBars.displayName = 'UiChartBars'

@@ -25,3 +25,5 @@ export const UiDashboardLayout = React.memo(function(
     </>
   )
 })
+
+UiDashboardLayout.displayName = 'UiDashboardLayout'

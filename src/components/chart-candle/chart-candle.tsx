@@ -59,3 +59,5 @@ export const UiChartCandle = React.memo(function(
     </>
   )
 })
+
+UiChartCandle.displayName = 'UiChartCandle'
