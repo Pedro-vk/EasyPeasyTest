@@ -2,6 +2,7 @@
 
 .heading {
   border-bottom: 1px solid gc(border);
-  margin: 0 (-$sizes---padding) $sizes---padding;
-  padding: 0 $sizes---padding $sizes---padding;
+  margin: (-$sizes---padding) (-$sizes---padding) $sizes---padding;
+  padding: $sizes---padding;
+  background: gc(bgdark);
 }
