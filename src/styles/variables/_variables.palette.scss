@@ -9,10 +9,10 @@ $palette: (
   brand:     #4EBABA,
   secondary: #7A62C9,
 
-  s0:      #1E88E5,
-  s1:      #00C853,
-  s2:      #FBC02D,
+  s0:      darken(#A0E7E5, 20%),
+  s1:      darken(#B4F8C8, 30%),
+  s2:      darken(#FBE7C6, 20%),
   s3:      #FF6D00,
-  s4:      #FF3D00,
+  s4:      darken(#FFAEBC, 20%),
   s5:      darken(#F7A8FF, 10%),
 ) !default;

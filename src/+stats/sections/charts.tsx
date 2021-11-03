@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { useStoreState, useStoreActions } from 'src/shared/store'
 
-import { UiText, UiSelector, UiChartBars } from 'ui'
+import { UiText, UiSelector, UiChartBars, UiChartCandle } from 'ui'
 
 import styles from './charts.module.scss'
 
@@ -14,7 +14,7 @@ export const Charts = () => {
         <div className={styles.container}>
           <UiText type="h3" className={styles.containerTitle}>Price</UiText>
           <div className={styles.containerChart}>
-            {timeData && <UiChartBars data={timeData}/>}
+            {timeData && <UiChartCandle data={timeData}/>}
           </div>
         </div>
         <div className={[styles.container, styles.containerVolume].join(' ')}>

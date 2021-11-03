@@ -17,8 +17,6 @@ export const UiChartBars = function(
 ) {
   const {data} = props
 
-  console.log(data)
-
   const volumes = data.map(_ => _.volume)
   const max = volumes.reduce((acc, _) => Math.max(acc, _))
   const min = volumes.reduce((acc, _) => Math.min(acc, _))
@@ -38,7 +36,7 @@ export const UiChartBars = function(
       <div className={b('chart')}>
         {volumes.map((v, i) => (
           <div key={i} className={b('column')}>
-            <div className={b('bar')} style={{height: `${(v -min) / (max - min) * 100}%`}} />
+            <div className={b('bar')} style={{height: `${(v - min) / (max - min) * 100}%`}} />
           </div>
         ))}
       </div>
