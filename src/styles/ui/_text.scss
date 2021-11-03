@@ -9,16 +9,19 @@ $ui-text---color: gc(text) !default;
       @include get-font(heading, ultralight);
 
       font-size: 42px;
+      margin: 0;
 
     } @else if ($type == h2) {
       @include get-font(heading, light);
 
       font-size: 32px;
+      margin: 0;
 
     } @else if ($type == h3) {
       @include get-font(heading, light);
 
       font-size: 24px;
+      margin: 0;
 
     } @else if ($type == regular) {
       @include get-font(text);

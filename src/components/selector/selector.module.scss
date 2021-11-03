@@ -1,0 +1,56 @@
+@import '../../styles/index';
+
+.selector {
+  padding: $sizes---padding 0;
+
+  &__heading {
+    padding-bottom: $sizes---padding / 2;
+    margin-bottom: $sizes---padding / 2;
+    border-bottom: 1px solid gc(border);
+  }
+
+  &__option {
+    @include transition(fast);
+
+    padding: $sizes---padding / 2;
+    text-transform: capitalize;
+    border-bottom: 1px solid gc(border, 0.5);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    &:before {
+      @include transition(fast);
+
+      content: '';
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 2px solid gc(brand);
+      box-sizing: border-box;
+      display: inline-block;
+      margin-right: $sizes---padding / 2;
+      position: relative;
+      top: -1px;
+      box-shadow: inset 0 0 0 2px gc(bg);
+    }
+
+    &:hover {
+      background: gc(bgdark);
+    }
+    &:hover:before {
+      background: gc(brand, 0.5);
+    }
+
+    &:last-child {
+      border: 0;
+    }
+
+    &--selected {
+      pointer-events: none;
+    }
+    &--selected:before {
+      background: gc(brand);
+    }
+  }
+}
